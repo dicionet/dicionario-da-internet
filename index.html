@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dicioNet">
+<head>
+    <meta charset="UTF-8">
+    <title>Dicionet - Dicionário de A a Z</title>
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/paper-theme.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+</head>
+<body>
+    <div class="container" ng-controller="WordsListController">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation" class="item-menu"><a href="memes.html">Memes</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted"><img src="img/dicionet.png"></h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>Dicionário da Internet</h1>
+        <p class="lead">Uma maneira de não se perder na web, aprendendo os termos mais utilizados.</p>
+        <div id="custom-search-input" class="col-lg-6 col-lg-offset-3">
+            <div class="input-group">
+                <input type="text" class="form-control input-lg" placeholder="Buscar palavra" ng-model="query" autofocus/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+            </div>
+        </div><br />
+      </div>
+      <div class="row marketing">
+        <div class="col-lg-2" ng-repeat="word in words | filter:query">
+            <a href="" ng-click="showMe(word)">{{ word.name }}</a>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
+        <div class="box">
+            <div class="info" id="answer">
+                <h3 class="text" id="wordTitle">{{ word.name }}</h3>
+                <p id="wordMeaning">{{ word.meaning }}</p>
+            </div>
+        </div>
+      <!-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12" ng-repeat="word in words | filter:query">
+            <div class="box">
+                <div class="info" id="{{ word.name }}">
+                    <h4 class="text">{{ word.name }}</h4>
+                    <p>{{ word.meaning }}</p>
+                </div>
+            </div>
+        </div> -->
+      <footer class="footer">
+        <p></p>
+      </footer>
+    </div> <!-- /container -->
+<script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="vendor/angular/angular.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/controllers/WordsListController.js"></script>
+</body>
+</html>
